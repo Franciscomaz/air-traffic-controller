@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="row">
+            <div class="col-8">
+                <canvas id="canvas" width="600" height="600"></canvas>
+            </div>
+            <div class="col-4">
+                <form>
+                    <div class="row">
+                        <div class="col-12">
+                            <span>
+                                X: 
+                            </span>
+                            <input id="posicao_x" value="0">
+                        </div>
+                        <div class="col-12">
+                            <span>
+                                Y: 
+                            </span>
+                            <input id="posicao_y" value="0">
+                        </div>
+                        <div class="col-12">
+                            <span>
+                                Velocidade: 
+                            </span>
+                            <input id="velocidade" value="0">
+                        </div>
+                        <div class="col-12">
+                            <span>
+                                Angulo: 
+                            </span>
+                            <input id="angulo" value="0">
+                        </div>
+                    </div>
+                </form>
+                <button onclick="adicionarAviao()" class="btn btn-success">Adicionar avião</button>
+            </div>
+        </div>
+    </body>
+    <script src="index.js"></script>
+    <script src="airplane.js"></script>
+    <script src="controller.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</html>
