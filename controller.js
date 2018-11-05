@@ -1,4 +1,5 @@
 function adicionarAviao() {
+    airplanes.changed = true
     let x = document.getElementById("coordenada_x").value
     let y = document.getElementById("coordenada_y").value
     let angulo = document.getElementById("angulo").value
