@@ -6,25 +6,21 @@ class AirplanesTable {
         let tBody = document.getElementById('avioes')
         let airplanesTable = '';
         airplanes.forEach(airplane => {
+            const coordinates = airplane.coordinates
+            const polar = coordinates.toPolar()
             let airplaneCell = '<tr>'
             airplaneCell += '<td><input type="checkbox" /></td>'
-            airplaneCell += '<td>' + airplane.name + '</td>'
-            airplaneCell += '<td>' + airplane.x + '</td>'
-            airplaneCell += '<td>' + airplane.y + '</td>'
-            airplaneCell += '<td>' + airplane.angle + ' °' + '</td>'
-            airplaneCell += '<td>' + airplane.direction + ' °' + '</td>'
-            airplaneCell += '<td>' + airplane.radius + ' Km' + '</td>'
-            airplaneCell += '<td>' + airplane.speed + ' Km' + '</td>'
+            airplaneCell += '<td>' + airplane.id + '</td>'
+            airplaneCell += '<td>' + coordinates.x.toFixed(2) + '</td>'
+            airplaneCell += '<td>' + coordinates.y.toFixed(2) + '</td>'
+            airplaneCell += '<td>' + polar.angle.value.toFixed(2) + ' °' + '</td>'
+            airplaneCell += '<td>' + airplane.direction.toFixed(2) + ' °' + '</td>'
+            airplaneCell += '<td>' + polar.radius.toFixed(2) + ' Km' + '</td>'
+            airplaneCell += '<td>' + airplane.speed.toFixed(2) + ' Km' + '</td>'
             airplaneCell += '</tr>'
             airplanesTable += airplaneCell;
             airplanes.changed = false
         })
         tBody.innerHTML = airplanesTable
     }
-
-    update() {
-
-    }
-
-
 }

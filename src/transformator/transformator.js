@@ -13,20 +13,9 @@ class Transformator {
         this.objeto.y *= Math.cos(angle) + this.objeto.x * Math.sin(angle) + yR;
     }
 
-    translate(x, y) {
-        this.objeto.x += x
-        this.objeto.y += y
+    translate(cartesian) {
+        this.objeto
+            .coordinates
+            .add(cartesian)
     }
-
-    scale() {
-
-    }
-
-    radians(degrees) {
-        return degrees * Math.PI / 180;
-    };
-   
-    degrees(radians) {
-        return radians * 180 / Math.PI;
-    };
 }

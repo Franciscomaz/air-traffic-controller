@@ -1,27 +1,40 @@
+let id = 1
 
 class Airplane {
-    constructor(x, y, angle, speed, direction, radius) {
-        this.x = x
-        this.y = y
-        this.angle = angle
+    constructor(coordinates, speed, direction) {
+        this.id = id++
+        this.coordinates = coordinates
         this.direction = direction
-        this.radius = radius
         this.speed = speed
-        this.name = 'a'+Math.round(Math.random() * (1 + 1000) + 1)
+        this.img = this.createImage()
     }
 
     render() {
-        const x = this.x + width / 2 - 16
-        const y = this.y * -1 + height / 2 - 16
-        let img = document.createElement('img');
-        img.src = 'airship.png'
-        console.log(img.src)
+        const center = Board
+            .center()
+            .add(new Cartesian(-16, -16))
+        const coordinates = this
+            .coordinates
+            .multiplyY(-1)
+            .add(center)
+        this.renderText(coordinates)
+        this.renderImage(coordinates)
+    }
+
+    renderText(coordinates) {
         ctx.font = "15px Arial";
-        ctx.save();
+        ctx.fillText(this.id, coordinates.x, coordinates.y);
+    }
+
+    renderImage(coordinates) {
+        ctx.drawImage(this.img, coordinates.x, coordinates.y);
+    }
+
+    rotate() {
+        ctx.save()
+        ctx.translate(width / 2 - 16, height / 2 - 16);
         ctx.rotate(this.angle * Math.PI / 180);
-        ctx.fillText(this.name, x, y);
-        ctx.drawImage(img, x, y);
-        ctx.restore();
+        ctx.restore()
     }
 
     update() {
@@ -42,5 +55,11 @@ class Airplane {
             this.y = tempHeight
         }
         this.x += this.speed/100
+    }
+
+    createImage() {
+        let img = new Image();
+        img.src = 'airship.png'
+        return img
     }
 }

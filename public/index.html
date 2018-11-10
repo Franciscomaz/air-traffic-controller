@@ -9,17 +9,22 @@
 </head>
 
 <body>
-<div class="row">
-    <div class="col-3 pt-2 pl-5">
+<div class="row pt-2">
+    <div class="col-3 pl-5">
         <div class="row">
             <div class="col-12">
-                <div class="card shadow p-3 mb-5 bg-white rounded">
-                    <div class="card-body">
-                        <div class="card-title">
+                <div class="card shadow mb-5">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <div>
                             <h5>Avião</h5>
                         </div>
+                        <div>
+                            <button id="toggle-coordenadas" onclick="toggleCoordenadas()" class="btn btn-primary">Polar</button>
+                        </div>
+                    </div>
+                    <div class="card-body">
                         <form>
-                            <div class="form-group row">
+                            <div id="cartesiano" class="form-group row">
                                 <div class="col-6">
                                     <input type="number" class="form-control" id="coordenada_x" placeholder="X">
                                 </div>
@@ -27,7 +32,7 @@
                                     <input type="number" class="form-control" id="coordenada_y" placeholder="Y">
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div id="polar" class="form-group row d-none">
                                 <div class="col-6">
                                     <div class="input-group">
                                         <input type="number" class="form-control" id="angulo" placeholder="Angulo">
@@ -38,9 +43,9 @@
                                 </div>
                                 <div class="col-6">
                                     <div class="input-group">
-                                        <input type="number" class="form-control" id="direcao" placeholder="Direção">
+                                        <input type="number" class="form-control" id="raio" placeholder="Raio">
                                         <div class="input-group-prepend">
-                                            <div class="input-group-text">°</div>
+                                            <div class="input-group-text">Km</div>
                                         </div>
                                     </div>
                                 </div>
@@ -48,9 +53,9 @@
                             <div class="form-group row">
                                 <div class="col-6">
                                     <div class="input-group">
-                                        <input type="number" class="form-control" id="raio" placeholder="Raio">
+                                        <input type="number" class="form-control" id="direcao" placeholder="Direção">
                                         <div class="input-group-prepend">
-                                            <div class="input-group-text">Km</div>
+                                            <div class="input-group-text">°</div>
                                         </div>
                                     </div>
                                 </div>
@@ -74,7 +79,7 @@
                 </div>
             </div>
             <div class="col-12">
-                <div class="card shadow bg-white rounded">
+                <div class="card shadow">
                     <ul class="nav nav-tabs">
                         <li class="nav-item">
                             <a id="transformacoes-tab" class="nav-link active" data-toggle="tab" href="#transformacoes"
@@ -108,7 +113,8 @@
                                 <div class="w-100"></div>
                                 <div class="form-group col-6">
                                     <div class="input-group">
-                                        <input type="number" class="form-control" id="rotacao_angle" placeholder="Angulo">
+                                        <input type="number" class="form-control" id="rotacao_angle"
+                                               placeholder="Angulo">
                                         <div class="input-group-prepend">
                                             <div class="input-group-text">°</div>
                                         </div>
@@ -188,13 +194,13 @@
     <div class="col-4 text-center">
         <canvas id="canvas" width="500" height="500"></canvas>
     </div>
-    <div class="col-5 pt-2 pr-5">
-        <div class="card">
+    <div class="col-5 pr-5">
+        <div class="card shadow">
             <table class="table">
                 <thead>
                 <tr>
-                    <th scope="col">Selecionado</th>
-                    <th scope="col">Nome</th>
+                    <th scope="col">#</th>
+                    <th scope="col">Id</th>
                     <th scope="col">X</th>
                     <th scope="col">Y</th>
                     <th scope="col">Angulo</th>
@@ -203,17 +209,20 @@
                     <th scope="col">Velocidade</th>
                 </tr>
                 </thead>
-                <tbody id="avioes">
+                <tbody id="avioes" class="align-itens-center">
                 </tbody>
             </table>
         </div>
     </div>
 </div>
 </body>
+<script src="../src/transformator/polar.js"></script>
+<script src="../src/transformator/cartesian.js"></script>
+<script src="../src/transformator/degrees.js"></script>
 <script src="../src/transformator/transformator.js"></script>
+<script src="../src/board/board.js"></script>
 <script src="../src/airplane/airplanes.js"></script>
 <script src="../src/airplane/airplanes-table.js"></script>
-<script src="../src/board/board.js"></script>
 <script src="../src/index.js"></script>
 <script src="../src/airplane/airplane.js"></script>
 <script src="../src/controller/controller.js"></script>

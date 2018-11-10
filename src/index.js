@@ -27,6 +27,6 @@ function render() {
 }
 
 function update() {
-    board.update()
+    //board.update()
     //airplanes.update()
 }

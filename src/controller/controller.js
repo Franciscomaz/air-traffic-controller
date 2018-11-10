@@ -7,14 +7,28 @@ function adicionarAviao() {
     let angulo = document.getElementById("angulo").value
     let direcao = document.getElementById("direcao").value
 
-    x = Number(x)
-    y = Number(y)
     raio = Number(raio)
     velocidade = Number(velocidade)
-    angulo = Number(angulo)
     direcao = Number(direcao)
 
-    const airplane = new Airplane(x, y, angulo, velocidade, raio, direcao)
-    airplanes.push(airplane)
+    const cartesian = $('#cartesiano').is(':visible')
+        ? new Cartesian(x, y)
+        : Cartesian.fromPolar(raio, new Degrees(angulo))
+
+    airplanes.push(new Airplane(cartesian, velocidade, direcao))
 }
 
+function toggleCoordenadas() {
+    const polar = $('#polar')
+    const cartesiano = $('#cartesiano')
+    const botao = $('#toggle-coordenadas')
+    if (cartesiano.is(':visible')) {
+        botao.html('Cartesiano')
+        cartesiano.hide()
+        polar.removeClass('d-none')
+    } else {
+        botao.html('Polar')
+        cartesiano.show()
+        polar.addClass('d-none')
+    }
+}
