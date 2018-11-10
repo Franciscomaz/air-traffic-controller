@@ -1,3 +1,4 @@
+
 class Airplane {
     constructor(x, y, angle = 45, speed = 200) {
         this.x = x
@@ -10,9 +11,9 @@ class Airplane {
     render() {
         let img = document.createElement('img');
         img.src = 'airship.png'
+        console.log(img.src)
         ctx.font = "15px Arial";
         ctx.save();
-        ctx.translate(width / 2 - 16, height / 2 - 16);
         ctx.rotate(this.angle * Math.PI / 180);
         ctx.fillText(this.name, this.x, this.y);
         ctx.drawImage(img, this.x, this.y);

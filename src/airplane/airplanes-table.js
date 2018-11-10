@@ -7,7 +7,7 @@ class AirplanesTable {
         let airplanesTable = '';
         airplanes.forEach(airplane => {
             let airplaneCell = '<tr>'
-            airplaneCell += '<td><input class="form-check-input" type="checkbox" value="" id=/></td>'
+            airplaneCell += '<td><input type="checkbox" /></td>'
             airplaneCell += '<td>' + airplane.name + '</td>'
             airplaneCell += '<td>' + airplane.x + '</td>'
             airplaneCell += '<td>' + airplane.y + '</td>'

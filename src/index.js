@@ -1,10 +1,10 @@
 const FPS = 60
 
-const canvas = document.getElementById("canvas");
-const ctx = canvas.getContext("2d");
+const canvas = document.getElementById("canvas")
+const ctx = canvas.getContext("2d")
 
-const width = canvas.width;
-const height = canvas.height;
+const width = canvas.width
+const height = canvas.height
 
 const board = new Board()
 
