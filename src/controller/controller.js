@@ -2,23 +2,19 @@ function adicionarAviao() {
     airplanes.changed = true
     let x = document.getElementById("coordenada_x").value
     let y = document.getElementById("coordenada_y").value
-    let angulo = document.getElementById("angulo").value
+    let raio = document.getElementById("raio").value
     let velocidade = document.getElementById("velocidade").value
+    let angulo = document.getElementById("angulo").value
+    let direcao = document.getElementById("direcao").value
 
-    x = parseInt(x, 10) || 0
-    y = -parseInt(y, 10) || 0
-    angulo = parseInt(angulo, 10) || 0
-    velocidade = parseInt(velocidade, 10) || 0
+    x = Number(x)
+    y = Number(y)
+    raio = Number(raio)
+    velocidade = Number(velocidade)
+    angulo = Number(angulo)
+    direcao = Number(direcao)
 
-
-    const airplane = new Airplane(x, y, angulo, velocidade)
-    this.centralizeAirplane(airplane)
+    const airplane = new Airplane(x, y, angulo, velocidade, raio, direcao)
     airplanes.push(airplane)
-}
-
-function centralizeAirplane(airplane) {
-    const x = width / 2 - 16
-    const y = height / 2 - 16
-    new Transformator(airplane).translate(x, y)
 }
 

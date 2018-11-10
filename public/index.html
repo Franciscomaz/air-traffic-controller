@@ -47,7 +47,12 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-6">
-                                    <input type="number" class="form-control" id="raio" placeholder="Raio">
+                                    <div class="input-group">
+                                        <input type="number" class="form-control" id="raio" placeholder="Raio">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">Km</div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="input-group">
@@ -102,7 +107,12 @@
                                 </div>
                                 <div class="w-100"></div>
                                 <div class="form-group col-6">
-                                    <input type="number" class="form-control" id="rotacao_angle" placeholder="Angulo">
+                                    <div class="input-group">
+                                        <input type="number" class="form-control" id="rotacao_angle" placeholder="Angulo">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">°</div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-6">
                                     <button class="btn btn-success">Rotacionar</button>
@@ -187,10 +197,10 @@
                     <th scope="col">Nome</th>
                     <th scope="col">X</th>
                     <th scope="col">Y</th>
-                    <th scope="col">Velocidade</th>
                     <th scope="col">Angulo</th>
                     <th scope="col">Direção</th>
                     <th scope="col">Raio</th>
+                    <th scope="col">Velocidade</th>
                 </tr>
                 </thead>
                 <tbody id="avioes">

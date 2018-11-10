@@ -11,8 +11,10 @@ class AirplanesTable {
             airplaneCell += '<td>' + airplane.name + '</td>'
             airplaneCell += '<td>' + airplane.x + '</td>'
             airplaneCell += '<td>' + airplane.y + '</td>'
-            airplaneCell += '<td>' + airplane.speed + '</td>'
-            airplaneCell += '<td>' + airplane.angle + '</td>'
+            airplaneCell += '<td>' + airplane.angle + ' °' + '</td>'
+            airplaneCell += '<td>' + airplane.direction + ' °' + '</td>'
+            airplaneCell += '<td>' + airplane.radius + ' Km' + '</td>'
+            airplaneCell += '<td>' + airplane.speed + ' Km' + '</td>'
             airplaneCell += '</tr>'
             airplanesTable += airplaneCell;
             airplanes.changed = false
@@ -23,4 +25,6 @@ class AirplanesTable {
     update() {
 
     }
+
+
 }

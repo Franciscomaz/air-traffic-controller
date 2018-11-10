@@ -1,22 +1,26 @@
 
 class Airplane {
-    constructor(x, y, angle = 45, speed = 200) {
+    constructor(x, y, angle, speed, direction, radius) {
         this.x = x
         this.y = y
         this.angle = angle
+        this.direction = direction
+        this.radius = radius
         this.speed = speed
         this.name = 'a'+Math.round(Math.random() * (1 + 1000) + 1)
     }
 
     render() {
+        const x = this.x + width / 2 - 16
+        const y = this.y * -1 + height / 2 - 16
         let img = document.createElement('img');
         img.src = 'airship.png'
         console.log(img.src)
         ctx.font = "15px Arial";
         ctx.save();
         ctx.rotate(this.angle * Math.PI / 180);
-        ctx.fillText(this.name, this.x, this.y);
-        ctx.drawImage(img, this.x, this.y);
+        ctx.fillText(this.name, x, y);
+        ctx.drawImage(img, x, y);
         ctx.restore();
     }
 
