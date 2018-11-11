@@ -11,6 +11,9 @@ const board = new Board()
 const airplanes = new Airplanes()
 const table = new AirplanesTable()
 
+const notificator = new Notificator()
+notificator.success('Radar iniciado.')
+
 init()
 
 function init() {
