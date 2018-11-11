@@ -14,7 +14,7 @@ class AirplanesTable {
             airplaneCell += '<td>' + coordinates.x.toFixed(2) + '</td>'
             airplaneCell += '<td>' + coordinates.y.toFixed(2) + '</td>'
             airplaneCell += '<td>' + polar.angle.value.toFixed(2) + ' °' + '</td>'
-            airplaneCell += '<td>' + airplane.direction.toFixed(2) + ' °' + '</td>'
+            airplaneCell += '<td>' + airplane.direction.value.toFixed(2) + ' °' + '</td>'
             airplaneCell += '<td>' + polar.radius.toFixed(2) + ' Km' + '</td>'
             airplaneCell += '<td>' + airplane.speed.toFixed(2) + ' Km' + '</td>'
             airplaneCell += '</tr>'

@@ -19,6 +19,10 @@ class Cartesian {
         return new Cartesian(this.x, this.y * times)
     }
 
+    invert() {
+        return new Cartesian(-this.x, -this.y)
+    }
+
     toPolar() {
         const distance = Math.sqrt(this.x * this.x + this.y * this.y)
         const radians = Math.atan2(this.y, this.x)

@@ -93,25 +93,25 @@
                     <div id="funcoes" class="tab-content card-body">
                         <div id="transformacoes" class="tab-pane fade show active" aria-labelledby="transformacoes-tab">
                             <form class="row pt-3 border">
-                                <div class="form-group col-3">
+                                <div class="form-group col-4">
                                     <input type="number" class="form-control" id="translacao_x" placeholder="X">
                                 </div>
-                                <div class="form-group col-3">
+                                <div class="form-group col-4">
                                     <input type="number" class="form-control" id="translacao_y" placeholder="Y">
                                 </div>
-                                <div class="col-6">
+                                <div class="col-4">
                                     <button class="btn btn-success">Transladar</button>
                                 </div>
                             </form>
                             <form class="row pt-3 border">
-                                <div class="form-group col-3">
+                                <div class="form-group col-4">
                                     <input type="number" class="form-control" id="rotacao_x" placeholder="X">
                                 </div>
-                                <div class="form-group col-3">
+                                <div class="form-group col-4">
                                     <input type="number" class="form-control" id="rotacao_y" placeholder="Y">
                                 </div>
                                 <div class="w-100"></div>
-                                <div class="form-group col-6">
+                                <div class="form-group col-8">
                                     <div class="input-group">
                                         <input type="number" class="form-control" id="rotacao_angle"
                                                placeholder="Angulo">
@@ -120,18 +120,28 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-4">
                                     <button class="btn btn-success">Rotacionar</button>
                                 </div>
                             </form>
                             <form class="row pt-3 border">
-                                <div class="form-group col-3">
-                                    <input type="number" class="form-control" id="escalonamento_x" placeholder="X">
+                                <div class="form-group col-4">
+                                    <div class="input-group">
+                                        <input type="number" class="form-control" id="escalonamento_x" placeholder="X">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">%</div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="form-group col-3">
-                                    <input type="number" class="form-control" id="escalonamento_y" placeholder="Y">
+                                <div class="form-group col-4">
+                                    <div class="input-group">
+                                        <input type="number" class="form-control" id="escalonamento_y" placeholder="Y">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">%</div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-4">
                                     <button class="btn btn-success">Escalonar</button>
                                 </div>
                             </form>
@@ -224,7 +234,6 @@
                         Relatório
                     </div>
                     <div id="notificacoes">
-
                     </div>
                 </div>
             </div>
@@ -232,16 +241,16 @@
     </div>
 </div>
 </body>
-<script src="../src/transformator/polar.js"></script>
-<script src="../src/transformator/cartesian.js"></script>
-<script src="../src/transformator/degrees.js"></script>
+<script src="../src/coordinates/polar.js"></script>
+<script src="../src/coordinates/cartesian.js"></script>
+<script src="../src/coordinates/degrees.js"></script>
 <script src="../src/transformator/transformator.js"></script>
 <script src="../src/board/board.js"></script>
 <script src="../src/airplane/airplanes.js"></script>
 <script src="../src/airplane/airplanes-table.js"></script>
 <script src="../src/airplane/airplane.js"></script>
 <script src="../src/controller/controller.js"></script>
-<script src="../src/controller/notificator.js"></script>
+<script src="../src/notificator/notificator.js"></script>
 <script src="../src/index.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

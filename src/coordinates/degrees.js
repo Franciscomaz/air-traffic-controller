@@ -7,6 +7,10 @@ class Degrees {
         return new Degrees(radians * 180 / Math.PI)
     }
 
+    invert() {
+        return new Degrees(-this.value)
+    }
+
     asRadians() {
         return this.value * Math.PI / 180;
     }

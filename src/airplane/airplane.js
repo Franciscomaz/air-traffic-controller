@@ -6,35 +6,43 @@ class Airplane {
         this.coordinates = coordinates
         this.direction = direction
         this.speed = speed
+        this.dimensions = new Cartesian(16, 16)
         this.img = this.createImage()
     }
 
     render() {
+        ctx.save()
+        this.moveToCenter()
+        this.rotate()
+        this.renderText()
+        this.renderImage()
+        ctx.restore()
+    }
+
+    moveToCenter() {
         const center = Board
             .center()
-            .add(new Cartesian(-16, -16))
         const coordinates = this
             .coordinates
             .multiplyY(-1)
             .add(center)
-        this.renderText(coordinates)
-        this.renderImage(coordinates)
+            .add(this.dimensions)
+        ctx.translate(coordinates.x, coordinates.y)
     }
 
-    renderText(coordinates) {
+    renderText() {
         ctx.font = "15px Arial";
-        ctx.fillText(this.id, coordinates.x, coordinates.y);
+        const dimensions = this.dimensions.invert()
+        ctx.fillText(this.id, dimensions.x, dimensions.y)
     }
 
-    renderImage(coordinates) {
-        ctx.drawImage(this.img, coordinates.x, coordinates.y);
+    renderImage() {
+        const dimensions = this.dimensions.invert()
+        ctx.drawImage(this.img, dimensions.x, dimensions.y)
     }
 
     rotate() {
-        ctx.save()
-        ctx.translate(width / 2 - 16, height / 2 - 16);
-        ctx.rotate(this.angle * Math.PI / 180);
-        ctx.restore()
+        ctx.rotate(this.direction.invert().asRadians());
     }
 
     update() {

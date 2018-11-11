@@ -9,13 +9,12 @@ function adicionarAviao() {
 
     raio = Number(raio)
     velocidade = Number(velocidade)
-    direcao = Number(direcao)
 
     const cartesian = $('#cartesiano').is(':visible')
         ? new Cartesian(x, y)
         : Cartesian.fromPolar(raio, new Degrees(angulo))
 
-    airplanes.push(new Airplane(cartesian, velocidade, direcao))
+    airplanes.push(new Airplane(cartesian, velocidade, new Degrees(direcao)))
 }
 
 function toggleCoordenadas() {

@@ -15,26 +15,16 @@ class Notificator {
         this.notify(this.createLayout('alert-danger', msg))
     }
 
+    notify(layout) {
+        this.element.innerHTML += layout
+    }
+
     createLayout(type, msg) {
         return '<div class="alert ' + type + '">' + this.formatMessage(msg) + '</div>'
     }
 
     formatMessage(msg) {
-        var today = new Date()
-        var day = today.getDay()
-        var month = today.getMonth()
-        var year = today.getFullYear()
-
-        var hours = today.getHours()
-        var minutes = today.getMinutes()
-        var seconds = today.getSeconds()
-
-        const formatedDate = day + '/' + month + '/' + year + ' ' + hours + ':' + minutes + ':' + seconds
+        const formatedDate = new Date().toLocaleString('pt-BR')
         return '<strong>' + formatedDate + ': </strong>' + msg
-    }
-
-    notify(layout) {
-        console.log(this.element)
-        this.element.innerHTML += layout
     }
 }
