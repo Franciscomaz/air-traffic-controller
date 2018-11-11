@@ -14,7 +14,13 @@ function adicionarAviao() {
 }
 
 function transladar() {
+    const x = document.getElementById('translacao_x').value
+    const y = document.getElementById('translacao_y').value
 
+    avioesSelecionados().forEach(aviaoSelecionado => {
+        const aviao = airplanes.find(airplane => airplane.id == aviaoSelecionado)
+        new Transformator(aviao).translate(new Cartesian(x, y))
+    })
 }
 
 function rotacionar() {
