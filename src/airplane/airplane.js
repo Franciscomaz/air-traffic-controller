@@ -24,7 +24,7 @@ class Airplane {
             .center()
         const coordinates = this
             .coordinates
-            .multiplyY(-1)
+            .scaleY(-1)
             .add(center)
             .add(this.dimensions)
         ctx.translate(coordinates.x, coordinates.y)
@@ -62,7 +62,7 @@ class Airplane {
         } else if (this.y < -tempHeight) {
             this.y = tempHeight
         }
-        this.x += this.speed/100
+        this.x += this.speed.value/100
     }
 
     createImage() {

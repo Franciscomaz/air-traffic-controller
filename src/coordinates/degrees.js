@@ -14,4 +14,8 @@ class Degrees {
     asRadians() {
         return this.value * Math.PI / 180;
     }
+
+    toString() {
+        return this.value.toFixed(2) + ' °'
+    }
 }
