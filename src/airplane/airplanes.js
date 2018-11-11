@@ -1,7 +1,6 @@
 class Airplanes extends Array{
     constructor() {
         super()
-        this.changed = true
     }
     
     render() {
@@ -14,9 +13,5 @@ class Airplanes extends Array{
         this.forEach(airplane => {
             airplane.update()
         })
-    }
-
-    isChanged() {
-        return this.changed
     }
 }

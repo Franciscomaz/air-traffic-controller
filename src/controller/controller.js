@@ -13,6 +13,18 @@ function adicionarAviao() {
     airplanes.push(new Airplane(cartesian, new Speed(velocidade), new Degrees(direcao)))
 }
 
+function transladar() {
+
+}
+
+function rotacionar() {
+
+}
+
+function escalonar() {
+
+}
+
 function avioesSelecionados() {
     var ids = [];
     $('#avioes input:checked').each(function() {

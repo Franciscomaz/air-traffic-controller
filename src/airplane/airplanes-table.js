@@ -1,24 +1,12 @@
 class AirplanesTable {
     render(airplanes) {
         airplanes.forEach(airplane => {
-            if ($('#aviao-' + airplane.id).length > 0) {
-                this.update(airplane)
-            } else {
+            if ($('#aviao-' + airplane.id).length === 0) {
                 this.add(airplane)
+            } else {
+                this.update(airplane)
             }
         })
-    }
-
-    update(airplane) {
-        const coordinates = airplane.coordinates
-        const polar = coordinates.toPolar()
-        document.getElementById('id-' + airplane.id).innerHTML = airplane.id
-        document.getElementById('x-' + airplane.id).innerHTML = coordinates.x.toFixed(2)
-        document.getElementById('y-' + airplane.id).innerHTML = coordinates.y.toFixed(2)
-        document.getElementById('angulo-' + airplane.id).innerHTML = polar.angle.toString()
-        document.getElementById('direcao-' + airplane.id).innerHTML = airplane.direction.toString()
-        document.getElementById('raio-' + airplane.id).innerHTML = polar.radiusToString()
-        document.getElementById('velocidade-' + airplane.id).innerHTML = airplane.speed.toString()
     }
 
     add(airplane) {
@@ -39,5 +27,15 @@ class AirplanesTable {
         document.getElementById('avioes').innerHTML += airplaneCell
     }
 
-
+    update(airplane) {
+        const coordinates = airplane.coordinates
+        const polar = coordinates.toPolar()
+        document.getElementById('id-' + airplane.id).innerHTML = airplane.id
+        document.getElementById('x-' + airplane.id).innerHTML = coordinates.x.toFixed(2)
+        document.getElementById('y-' + airplane.id).innerHTML = coordinates.y.toFixed(2)
+        document.getElementById('angulo-' + airplane.id).innerHTML = polar.angle.toString()
+        document.getElementById('direcao-' + airplane.id).innerHTML = airplane.direction.toString()
+        document.getElementById('raio-' + airplane.id).innerHTML = polar.radiusToString()
+        document.getElementById('velocidade-' + airplane.id).innerHTML = airplane.speed.toString()
+    }
 }
