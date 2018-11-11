@@ -28,7 +28,13 @@ function rotacionar() {
 }
 
 function escalonar() {
+    const x = document.getElementById('escalonamento_x').value
+    const y = document.getElementById('escalonamento_y').value
 
+    avioesSelecionados().forEach(aviaoSelecionado => {
+        const aviao = airplanes.find(airplane => airplane.id == aviaoSelecionado)
+        new Transformator(aviao).scale(Number(x), Number(y))
+    })
 }
 
 function avioesSelecionados() {
