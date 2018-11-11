@@ -24,7 +24,14 @@ function transladar() {
 }
 
 function rotacionar() {
+    const x = document.getElementById('rotacao_x').value
+    const y = document.getElementById('rotacao_y').value
+    const angulo = document.getElementById('rotacao_angulo').value
 
+    avioesSelecionados().forEach(aviaoSelecionado => {
+        const aviao = airplanes.find(airplane => airplane.id == aviaoSelecionado)
+        new Transformator(aviao).rotate(new Degrees(angulo), new Cartesian(x, y))
+    })
 }
 
 function escalonar() {

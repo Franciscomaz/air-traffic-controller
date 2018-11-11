@@ -24,7 +24,7 @@ class Airplane {
             .center()
         const coordinates = this
             .coordinates
-            .scaleY(-1)
+            .multiplyY(-1)
             .add(center)
             .add(this.dimensions)
         ctx.translate(coordinates.x, coordinates.y)

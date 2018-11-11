@@ -15,15 +15,15 @@ class Cartesian {
         return new Cartesian(this.x + cartesian.x, this.y + cartesian.y)
     }
 
-    scale(times) {
-        return this.scaleX(times).scaleY(times)
+    minus(cartesian) {
+        return this.add(cartesian.invert())
     }
 
-    scaleX(times) {
+    multiplyX(times) {
         return new Cartesian(this.x * times, this.y)
     }
 
-    scaleY(times) {
+    multiplyY(times) {
         return new Cartesian(this.x, this.y * times)
     }
 

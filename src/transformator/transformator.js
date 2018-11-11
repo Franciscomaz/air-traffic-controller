@@ -3,14 +3,14 @@ class Transformator {
         this.object = objeto
     }
 
-    rotate(angle, xR, yR) {
-        this.object.x -= xR;
-        this.object.y -= yR;
-
-        angle = radians(angle)
-
-        this.object.x *= Math.cos(angle) - this.object.x * Math.sin(angle) + xR;
-        this.object.y *= Math.cos(angle) + this.object.x * Math.sin(angle) + yR;
+    rotate(angle, point) {
+        const radians = angle.asRadians()
+        let coordinates = this.object
+            .coordinates
+            .minus(point)
+        coordinates.x = coordinates.x * Math.cos(radians) - coordinates.y * Math.sin(radians)
+        coordinates.y = coordinates.x * Math.sin(radians) + coordinates.y * Math.cos(radians)
+        this.object.coordinates = coordinates.add(point)
     }
 
     translate(cartesian) {
@@ -22,7 +22,7 @@ class Transformator {
     scale(percentX, percentY) {
         this.object.coordinates = this.object
             .coordinates
-            .scaleY(percentY / 100)
-            .scaleX(percentX / 100)
+            .multiplyY(percentY / 100)
+            .multiplyX(percentX / 100)
     }
 }
