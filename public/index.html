@@ -165,7 +165,7 @@
                                     <button class="btn btn-success">Aviões próximos</button>
                                 </div>
                             </form>
-                            <form class="row pt-3 pb-3 border">
+                            <div class="row pt-3 pb-3 border">
                                 <div class="form-group col-12">
                                     <div class="input-group">
                                         <input id="distancia_minima_aeroporto"
@@ -178,10 +178,10 @@
                                     </div>
                                 </div>
                                 <div class="col-6">
-                                    <button class="btn btn-success">Aviões próximos do aeroporto</button>
+                                    <button onclick="avioesProximosDoAeroporto()" class="btn btn-success">Aviões próximos do aeroporto</button>
                                 </div>
-                            </form>
-                            <form class="row pt-3 pb-3 border">
+                            </div>
+                            <div class="row pt-3 pb-3 border">
                                 <div class="form-group col-12">
                                     <div class="input-group">
                                         <input id="tempo_minimo"
@@ -196,7 +196,7 @@
                                 <div class="col-6">
                                     <button class="btn btn-success">Em rota de colisão</button>
                                 </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -235,7 +235,7 @@
                     <div class="card-header">
                         Relatório
                     </div>
-                    <div id="notificacoes">
+                    <div style="overflow-y: auto;" id="notificacoes">
                     </div>
                 </div>
             </div>

@@ -13,6 +13,22 @@ function adicionarAviao() {
     airplanes.push(new Airplane(cartesian, new Speed(velocidade), new Degrees(direcao)))
 }
 
+function avioesProximosDoAeroporto() {
+    let distanciaMinima = document.getElementById("distancia_minima_aeroporto").value
+
+    const avioes = avioesSelecionados()
+        .map(aviaoSelecionado => airplanes.find(airplane => airplane.id == aviaoSelecionado))
+
+    console.log(avioes)
+
+    const avioesComDistanciaMinima = avioes
+        .filter(airplane => airplane.coordinates.toPolar().radius <= distanciaMinima)
+
+    avioesComDistanciaMinima.forEach(aviao => {
+        notificator.warning('ID: ' + aviao.id + " Distância: " + aviao.coordinates.toPolar().radiusToString())
+    })
+}
+
 function transladar() {
     const x = document.getElementById('translacao_x').value
     const y = document.getElementById('translacao_y').value
