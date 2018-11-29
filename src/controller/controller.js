@@ -13,21 +13,45 @@ function adicionarAviao() {
     airplanes.push(new Airplane(cartesian, new Speed(velocidade), new Degrees(direcao)))
 }
 
+function avioesProximos() {
+    let distanciaMinima = document.getElementById("distancia_minima_avioes").value
+
+    const airplanesClone = airplanes.clone()
+
+    while (airplanesClone.length > 0) {
+        const airplane1 = airplanesClone.pop()
+        const avioesProximos = airplanesClone.filter(airplane2 => {
+            const distanceBetween = airplane2.coordinates.distanceTo(airplane1.coordinates)
+            return distanceBetween <= distanciaMinima
+        })
+        avioesProximos.forEach(aviao => {
+            const distanceBetween = aviao.coordinates.distanceTo(airplane1.coordinates)
+            const mensagem = 'Avião '
+                + aviao.id
+                + " está a "
+                + distanceBetween.toFixed(2)
+                + " Km próximo do avião "
+                + airplane1.id
+            if (distanceBetween < 100) {
+                notificator.danger(mensagem)
+            } else {
+                notificator.warning(mensagem)
+            }
+        })
+    }
+}
+
 function avioesProximosDoAeroporto() {
     let distanciaMinima = document.getElementById("distancia_minima_aeroporto").value
 
-    const avioes = avioesSelecionados()
-        .map(aviaoSelecionado => airplanes.find(airplane => airplane.id == aviaoSelecionado))
-
-    console.log(avioes)
-
-    const avioesComDistanciaMinima = avioes
+    const avioesComDistanciaMinima = airplanes
         .filter(airplane => airplane.coordinates.toPolar().radius <= distanciaMinima)
 
     avioesComDistanciaMinima.forEach(aviao => {
-        notificator.warning('ID: ' + aviao.id + " Distância: " + aviao.coordinates.toPolar().radiusToString())
+        notificator.warning('Avião: ' + aviao.id + " Distância: " + aviao.coordinates.toPolar().radiusToString())
     })
 }
+
 
 function transladar() {
     const x = document.getElementById('translacao_x').value
@@ -62,7 +86,7 @@ function escalonar() {
 
 function avioesSelecionados() {
     var ids = [];
-    $('#avioes input:checked').each(function() {
+    $('#avioes input:checked').each(function () {
         ids.push($(this).attr('name'));
     });
     return ids
@@ -73,11 +97,11 @@ function toggleCoordenadas() {
     const cartesiano = $('#cartesiano')
     const botao = $('#toggle-coordenadas')
     if (cartesiano.is(':visible')) {
-        botao.html('Cartesiano')
+        botao.html('Polar')
         cartesiano.hide()
         polar.removeClass('d-none')
     } else {
-        botao.html('Polar')
+        botao.html('Cartesiano')
         cartesiano.show()
         polar.addClass('d-none')
     }

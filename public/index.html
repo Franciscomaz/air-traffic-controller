@@ -20,7 +20,7 @@
                         </div>
                         <div>
                             <button id="toggle-coordenadas" onclick="toggleCoordenadas()" class="btn btn-primary">
-                                Polar
+                                Cartesiano
                             </button>
                         </div>
                     </div>
@@ -149,7 +149,7 @@
                             </div>
                         </div>
                         <div id="rastreamento" class="tab-pane fade" aria-labelledby="ratreamento-tab">
-                            <form class="row pt-3 pb-3 border">
+                            <div class="row pt-3 pb-3 border">
                                 <div class="form-group col-12">
                                     <div class="input-group">
                                         <input id="distancia_minima_avioes"
@@ -162,9 +162,9 @@
                                     </div>
                                 </div>
                                 <div class="col-6">
-                                    <button class="btn btn-success">Aviões próximos</button>
+                                    <button class="btn btn-success" onclick="avioesProximos()">Aviões próximos</button>
                                 </div>
-                            </form>
+                            </div>
                             <div class="row pt-3 pb-3 border">
                                 <div class="form-group col-12">
                                     <div class="input-group">

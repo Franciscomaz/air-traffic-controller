@@ -14,4 +14,8 @@ class Airplanes extends Array{
             airplane.update()
         })
     }
+
+    clone() {
+        return this.slice(0)
+    }
 }
