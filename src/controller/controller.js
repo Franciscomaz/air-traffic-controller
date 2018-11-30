@@ -13,6 +13,20 @@ function adicionarAviao() {
     airplanes.push(new Airplane(cartesian, new Speed(velocidade), new Degrees(direcao)))
 }
 
+//TODO
+function editarAviao() {
+    let x = document.getElementById("coordenada_x").value
+    let y = document.getElementById("coordenada_y").value
+    let raio = document.getElementById("raio").value
+    let velocidade = document.getElementById("velocidade").value
+    let angulo = document.getElementById("angulo").value
+    let direcao = document.getElementById("direcao").value
+
+    const cartesian = $('#cartesiano').is(':visible')
+        ? new Cartesian(x, y)
+        : Cartesian.fromPolar(Number(raio), new Degrees(angulo))
+}
+
 function avioesProximos() {
     let distanciaMinima = document.getElementById("distancia_minima_avioes").value
 
@@ -29,8 +43,8 @@ function avioesProximos() {
             const mensagem = 'Avião '
                 + aviao.id
                 + " está a "
-                + distanceBetween.toFixed
-                + " Km próximo do avião "
+                + distanceBetween.toFixed(2)
+                + " Km do avião "
                 + airplane1.id
             if (distanceBetween < 100) {
                 notificator.danger(mensagem)
@@ -107,5 +121,5 @@ function toggleCoordenadas() {
 }
 
 function isModoSandbox() {
-    
+
 }
