@@ -29,7 +29,7 @@ function avioesProximos() {
             const mensagem = 'Avião '
                 + aviao.id
                 + " está a "
-                + distanceBetween.toFixed(2)
+                + distanceBetween.toFixed
                 + " Km próximo do avião "
                 + airplane1.id
             if (distanceBetween < 100) {
@@ -51,7 +51,6 @@ function avioesProximosDoAeroporto() {
         notificator.warning('Avião: ' + aviao.id + " Distância: " + aviao.coordinates.toPolar().radiusToString())
     })
 }
-
 
 function transladar() {
     const x = document.getElementById('translacao_x').value
@@ -105,4 +104,8 @@ function toggleCoordenadas() {
         cartesiano.show()
         polar.addClass('d-none')
     }
+}
+
+function isModoSandbox() {
+    
 }

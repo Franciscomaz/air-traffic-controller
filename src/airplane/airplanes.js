@@ -1,4 +1,4 @@
-class Airplanes extends Array{
+class Airplanes extends Array {
     constructor() {
         super()
     }

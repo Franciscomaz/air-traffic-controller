@@ -52,17 +52,19 @@ class Airplane {
     move() {
         let tempWidth = width / 2;
         let tempHeight = height / 2;
-        if (this.x < -tempWidth) {
-            this.x = tempWidth
-        } else if (this.x > tempWidth) {
-            this.x = -tempWidth
+        if (this.coordinates.x < -tempWidth) {
+            this.coordinates.x = tempWidth
+        } else if (this.coordinates.x > tempWidth) {
+            this.coordinates.x = -tempWidth
         }
-        if (this.y > tempHeight) {
-            this.y = -tempHeight
+        if (this.coordinates.y > tempHeight) {
+            this.coordinates.y = -tempHeight
         } else if (this.y < -tempHeight) {
-            this.y = tempHeight
+            this.coordinates.y = tempHeight
         }
-        this.x += this.speed.value/100
+        const speed = this.speed.value/100
+        this.coordinates.x += speed * Math.cos(this.direction.asRadians())
+        this.coordinates.y += speed * Math.sin(this.direction.asRadians())
     }
 
     createImage() {
