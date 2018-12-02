@@ -6,22 +6,41 @@ class Airplane {
         this.coordinates = coordinates
         this.direction = direction
         this.speed = speed
-        this.dimensions = new Cartesian(16, 16)
-        this.img = this.createImage()
+        this.dimensions = new Cartesian(32, 32)
+        this.img = this._createImage()
     }
 
     render() {
         ctx.save()
-        this.moveToCenter()
-        this.rotate()
-        this.renderText()
-        this.renderImage()
+        this._moveToCenter()
+        this._rotate()
+        this._renderText()
+        this._renderImage()
         ctx.restore()
     }
 
-    moveToCenter() {
+    update() {
+        this._move()
+    }
+
+    poitingTo() {
+        const x = Math.cos(this.direction.asRadians())
+        const y = Math.sin(this.direction.asRadians())
+        return new Cartesian(x, y)
+    }
+
+    estimatedPositionIn(seconds) {
+        const kilometersPerSecond = this.speed
+            .toKilometersPerSeconds()
+            .scaled()
+
+        return this.poitingTo().mutiplyBy(kilometersPerSecond * seconds)
+    }
+
+    _moveToCenter() {
         const center = Board
             .center()
+            .minus(this.dimensions.half())
         const coordinates = this
             .coordinates
             .multiplyY(-1)
@@ -30,44 +49,37 @@ class Airplane {
         ctx.translate(coordinates.x, coordinates.y)
     }
 
-    renderText() {
+    _rotate() {
+        ctx.rotate(this.direction.invert().asRadians());
+    }
+
+    _renderText() {
         ctx.font = "15px Arial";
         const dimensions = this.dimensions.invert()
         ctx.fillText(this.id, dimensions.x, dimensions.y)
     }
 
-    renderImage() {
+    _renderImage() {
         const dimensions = this.dimensions.invert()
         ctx.drawImage(this.img, dimensions.x, dimensions.y)
     }
 
-    rotate() {
-        ctx.rotate(this.direction.invert().asRadians());
-    }
-
-    update() {
-        this.move()
-    }
-
-    move() {
-        let tempWidth = width / 2;
-        let tempHeight = height / 2;
-        if (this.coordinates.x < -tempWidth) {
-            this.coordinates.x = tempWidth
-        } else if (this.coordinates.x > tempWidth) {
-            this.coordinates.x = -tempWidth
+    _move() {
+        const boardDimensions = Board.center();
+        if (this.coordinates.x < -boardDimensions.x) {
+            this.coordinates.x = boardDimensions.x
+        } else if (this.coordinates.x > boardDimensions.x) {
+            this.coordinates.x = -boardDimensions.x
         }
-        if (this.coordinates.y > tempHeight) {
-            this.coordinates.y = -tempHeight
-        } else if (this.y < -tempHeight) {
-            this.coordinates.y = tempHeight
+        if (this.coordinates.y > boardDimensions.y) {
+            this.coordinates.y = -boardDimensions.y
+        } else if (this.y < -boardDimensions.y) {
+            this.coordinates.y = boardDimensions.y
         }
-        const speed = this.speed.value/100
-        this.coordinates.x += speed * Math.cos(this.direction.asRadians())
-        this.coordinates.y += speed * Math.sin(this.direction.asRadians())
+        this.coordinates.add(this.poitingTo().mutiplyBy(this.speed.scaled()))
     }
 
-    createImage() {
+    _createImage() {
         let img = new Image();
         img.src = 'airship.png'
         return img

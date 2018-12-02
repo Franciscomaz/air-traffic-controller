@@ -19,7 +19,9 @@ init()
 function init() {
     setInterval(() => {
         render()
-        update()
+        if (!isModoSandbox()){
+            update()
+        }
     }, 1000 / FPS)
 }
 
@@ -30,5 +32,5 @@ function render() {
 }
 
 function update() {
-    //airplanes.update()
+    airplanes.update()
 }

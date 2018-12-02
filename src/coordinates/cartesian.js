@@ -19,6 +19,14 @@ class Cartesian {
         return this.add(cartesian.invert())
     }
 
+    minusX(number) {
+        return new Cartesian(this.x - number, this.y)
+    }
+
+    mutiplyBy(times) {
+        return new Cartesian(this.x * times, this.y * times)
+    }
+
     multiplyX(times) {
         return new Cartesian(this.x * times, this.y)
     }
@@ -27,11 +35,15 @@ class Cartesian {
         return new Cartesian(this.x, this.y * times)
     }
 
+    half() {
+        return new Cartesian(this.x / 2, this.y / 2)
+    }
+
     invert() {
         return new Cartesian(-this.x, -this.y)
     }
 
-    distanceTo(point) {
+    distanceBetween(point) {
         return Math.sqrt((Math.pow(point.x-this.x,2))+(Math.pow(point.y-this.y,2)))
     }
 

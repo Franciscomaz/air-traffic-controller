@@ -1,3 +1,5 @@
+const escala = 1000
+
 function adicionarAviao() {
     let x = document.getElementById("coordenada_x").value
     let y = document.getElementById("coordenada_y").value
@@ -10,7 +12,7 @@ function adicionarAviao() {
         ? new Cartesian(x, y)
         : Cartesian.fromPolar(Number(raio), new Degrees(angulo))
 
-    airplanes.push(new Airplane(cartesian, new Speed(velocidade), new Degrees(direcao)))
+    airplanes.push(new Airplane(cartesian, new KilometersPerHour(velocidade, escala), new Degrees(direcao)))
 }
 
 //TODO
@@ -28,35 +30,29 @@ function editarAviao() {
 }
 
 function avioesProximos() {
-    let distanciaMinima = document.getElementById("distancia_minima_avioes").value
+    const distanciaMinima = document.getElementById("distancia_minima_avioes").value
+    const paresProximos = airplanes
+        .makePairs()
+        .filter(pair => pair.distanceBetween() <= distanciaMinima)
 
-    const airplanesClone = airplanes.clone()
-
-    while (airplanesClone.length > 0) {
-        const airplane1 = airplanesClone.pop()
-        const avioesProximos = airplanesClone.filter(airplane2 => {
-            const distanceBetween = airplane2.coordinates.distanceTo(airplane1.coordinates)
-            return distanceBetween <= distanciaMinima
-        })
-        avioesProximos.forEach(aviao => {
-            const distanceBetween = aviao.coordinates.distanceTo(airplane1.coordinates)
-            const mensagem = 'Avião '
-                + aviao.id
-                + " está a "
-                + distanceBetween.toFixed(2)
-                + " Km do avião "
-                + airplane1.id
-            if (distanceBetween < 100) {
-                notificator.danger(mensagem)
-            } else {
-                notificator.warning(mensagem)
-            }
-        })
-    }
+    paresProximos.forEach(pair => {
+        const distanceBetween = pair.distanceBetween()
+        const mensagem = 'Avião '
+            + pair.first.id
+            + " está a "
+            + distanceBetween.toFixed(2)
+            + " Km do avião "
+            + pair.second.id
+        if (distanceBetween < 100) {
+            notificator.danger(mensagem)
+        } else {
+            notificator.warning(mensagem)
+        }
+    })
 }
 
 function avioesProximosDoAeroporto() {
-    let distanciaMinima = document.getElementById("distancia_minima_aeroporto").value
+    const distanciaMinima = document.getElementById("distancia_minima_aeroporto").value
 
     const avioesComDistanciaMinima = airplanes
         .filter(airplane => airplane.coordinates.toPolar().radius <= distanciaMinima)
@@ -64,6 +60,12 @@ function avioesProximosDoAeroporto() {
     avioesComDistanciaMinima.forEach(aviao => {
         notificator.warning('Avião: ' + aviao.id + " Distância: " + aviao.coordinates.toPolar().radiusToString())
     })
+}
+
+function avioesEmRotaDeColisao() {
+    const tempoMinimoEmSegundos = document.getElementById("tempo_minimo").value
+
+
 }
 
 function transladar() {
@@ -121,5 +123,5 @@ function toggleCoordenadas() {
 }
 
 function isModoSandbox() {
-
+    return $('#sandbox').is('input:checked')
 }

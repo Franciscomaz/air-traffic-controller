@@ -24,8 +24,8 @@ class Board {
     }
 
     static center () {
-        const centerX = width / 2 - 16
-        const centerY = height / 2 - 16
+        const centerX = width / 2
+        const centerY = height / 2
         return new Cartesian(centerX, centerY)
     }
 }

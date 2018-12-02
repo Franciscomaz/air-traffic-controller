@@ -1,0 +1,5 @@
+class CollisionRoute {
+    timeToCollide() {
+
+    }
+}
