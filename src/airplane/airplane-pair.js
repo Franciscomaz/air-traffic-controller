@@ -14,9 +14,7 @@ class AirplanePair {
         const firstLane = TravelLane.fromRightSide(new Trajectory(this.first.coordinates, firstEndPosition), firstDimensions.x)
         const secondLane = TravelLane.fromRightSide(new Trajectory(this.second.coordinates, secondEndPosition), secondDimensions.x)
 
-        if(!firstLane.intersectsWith(secondLane)) return false
-
-
+        return firstLane.intersectsWith(secondLane)
     }
 
     distanceBetween() {
