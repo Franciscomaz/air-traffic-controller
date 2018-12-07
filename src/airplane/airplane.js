@@ -32,7 +32,6 @@ class Airplane {
     estimatedPositionIn(seconds) {
         const kilometersPerSecond = this.speed
             .toKilometersPerSeconds()
-            .scaled()
 
         return this.poitingTo().mutiplyBy(kilometersPerSecond * seconds)
     }

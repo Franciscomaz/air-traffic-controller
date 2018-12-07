@@ -65,7 +65,20 @@ function avioesProximosDoAeroporto() {
 function avioesEmRotaDeColisao() {
     const tempoMinimoEmSegundos = document.getElementById("tempo_minimo").value
 
-
+    airplanes
+        .pairs()
+        .filter(pair => pair.willCollideIn(tempoMinimoEmSegundos))
+        .forEach(pair => {
+            notificator.danger(
+                "Avião " 
+                + pair.first.id 
+                + " irá colidir com o avião " 
+                + pair.second.id
+                + " em "
+                + pair.timeToCollide().toFixed(2)
+                + " segundos"
+            )
+        });
 }
 
 function transladar() {

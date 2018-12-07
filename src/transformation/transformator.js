@@ -8,13 +8,9 @@ class Transformator {
         let coordinates = this.object
             .coordinates
             .minus(point)
-        
-        const originalCoordinates = Object.assign({}, coordinates)
-            
-        coordinates.x = coordinates.x * Math.cos(radians) - coordinates.y * Math.sin(radians)
-        coordinates.y = originalCoordinates.x * Math.sin(radians) + coordinates.y * Math.cos(radians)
-        
-        this.object.coordinates = coordinates.add(point)
+        const x = coordinates.x * Math.cos(radians) - coordinates.y * Math.sin(radians)
+        const y = coordinates.x * Math.sin(radians) + coordinates.y * Math.cos(radians)
+        this.object.coordinates = new Cartesian(x, y).add(point)
     }
  
     translate(cartesian) {
