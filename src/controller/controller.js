@@ -32,7 +32,7 @@ function editarAviao() {
 function avioesProximos() {
     const distanciaMinima = document.getElementById("distancia_minima_avioes").value
     const paresProximos = airplanes
-        .makePairs()
+        .pairs()
         .filter(pair => pair.distanceBetween() <= distanciaMinima)
 
     paresProximos.forEach(pair => {

@@ -19,7 +19,5 @@ class TravelLane {
             || travelLane.left.intersectsWith(this.right)
             || travelLane.right.intersectsWith(this.left)
             || travelLane.right.intersectsWith(this.right)
-
-
     }
 }

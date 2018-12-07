@@ -45,7 +45,7 @@ class Airplane {
             .coordinates
             .multiplyY(-1)
             .add(center)
-            .add(this.dimensions)
+            .add(this.dimensions.half())
         ctx.translate(coordinates.x, coordinates.y)
     }
 
@@ -55,13 +55,13 @@ class Airplane {
 
     _renderText() {
         ctx.font = "15px Arial";
-        const dimensions = this.dimensions.invert()
-        ctx.fillText(this.id, dimensions.x, dimensions.y)
+        const coordinates = this.coordinates.add(this.dimensions.half().invert())
+        ctx.fillText(this.id, coordinates.x, coordinates.y)
     }
 
     _renderImage() {
-        const dimensions = this.dimensions.invert()
-        ctx.drawImage(this.img, dimensions.x, dimensions.y)
+        const coordinates = this.coordinates.add(this.dimensions.half().invert())
+        ctx.drawImage(this.img, coordinates.x, coordinates.y)
     }
 
     _move() {
@@ -73,10 +73,10 @@ class Airplane {
         }
         if (this.coordinates.y > boardDimensions.y) {
             this.coordinates.y = -boardDimensions.y
-        } else if (this.y < -boardDimensions.y) {
+        } else if (this.coordinates.y < -boardDimensions.y) {
             this.coordinates.y = boardDimensions.y
         }
-        this.coordinates.add(this.poitingTo().mutiplyBy(this.speed.scaled()))
+        this.coordinates = this.coordinates.add(this.poitingTo().mutiplyBy(this.speed.scaled()))
     }
 
     _createImage() {

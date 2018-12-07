@@ -43,6 +43,10 @@ class Cartesian {
         return new Cartesian(-this.x, -this.y)
     }
 
+    invertY() {
+        return this.multiplyY(-1)
+    }
+
     distanceBetween(point) {
         return Math.sqrt((Math.pow(point.x-this.x,2))+(Math.pow(point.y-this.y,2)))
     }
